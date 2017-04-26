@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="page-header">
+    <h2><%= @song.title %> by <%= @song.artist %></h2>
+  </div>
+  <div class="container">
+    <h4>Others who added this song:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Times Added</th>
+        </tr>
+      </thead>
+      <% if @users %>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><a href="/users/<%= user.id %>"><%= user.first_name %> <%= user.last_name %></a></td>
+              <td><%= user.songs.where(id: @song.id).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

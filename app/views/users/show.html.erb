@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="page-header">
+    <h2><%= @user.first_name %> <%= @user.last_name %>'s Playlist</h2>
+  </div>
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Title</th>
+          <th>Times Added</th>
+        </tr>
+      </thead>
+      <% if @songs %>
+        <tbody>
+          <% @songs.each do |song| %>
+            <tr>
+              <td><%= song.artist %></td>
+              <td><%= song.title %></td>
+              <td><%= @user.songs.where(id: song.id).count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
