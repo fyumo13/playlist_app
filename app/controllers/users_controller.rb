@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, except: [:show, :edit, :update, :destroy]
-  before_action :require_id_match, except: [:create]
+  before_action :require_id_match, except: [:create, :show]
 
   # registers new user account
   def create
